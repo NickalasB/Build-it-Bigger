@@ -20,8 +20,6 @@ public class MainActivity extends ActionBarActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
     }
 
 
@@ -49,11 +47,9 @@ public class MainActivity extends ActionBarActivity {
 
     public void tellJoke(View view) {
         Intent mIntent = new Intent(this, MainJokeActivity.class);
-//        mIntent.putExtra();
-
+        mIntent.putExtra("joke1", mjavaJokes.getJavaJoke1());
         startActivity(mIntent);
         Toast.makeText(this, mjavaJokes.getJavaJoke1(), Toast.LENGTH_SHORT).show();
     }
-
 
 }

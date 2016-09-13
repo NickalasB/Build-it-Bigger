@@ -8,7 +8,12 @@
     <TextView
         android:id="@+id/joke_fragment_textview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:layout_gravity="center_vertical"
+        android:gravity="center"
+        tools:text="@string/hello_blank_fragment"
+        android:textSize="48sp"
+        android:textStyle="bold"/>
 
 </FrameLayout>
