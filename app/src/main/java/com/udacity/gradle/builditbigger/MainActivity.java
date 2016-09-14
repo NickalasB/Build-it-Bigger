@@ -15,8 +15,6 @@ import com.example.javaJokes;
 import com.example.nickbradshaw.myapplication.backend.myApi.MyApi;
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.extensions.android.json.AndroidJsonFactory;
-import com.google.api.client.googleapis.services.AbstractGoogleClientRequest;
-import com.google.api.client.googleapis.services.GoogleClientRequestInitializer;
 import com.zonkey.myandroidjokelibrary.MainJokeActivity;
 
 import java.io.IOException;
@@ -73,18 +71,24 @@ class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Void, String> 
     @Override
     protected String doInBackground(Pair<Context, String>... params) {
         if(myApiService == null) {  // Only do this once
-            MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport(),
-                    new AndroidJsonFactory(), null)
-                    // options for running against local devappserver
-                    // - 10.0.2.2 is localhost's IP address in Android emulator
-                    // - turn off compression when running against local devappserver
-                    .setRootUrl("http://10.0.2.2:8080/_ah/api/")
-                    .setGoogleClientRequestInitializer(new GoogleClientRequestInitializer() {
-                        @Override
-                        public void initialize(AbstractGoogleClientRequest<?> abstractGoogleClientRequest) throws IOException {
-                            abstractGoogleClientRequest.setDisableGZipContent(true);
-                        }
-                    });
+            MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport(), new AndroidJsonFactory(), null)
+                    .setRootUrl("https://build-it-bigger-143311.appspot.com/_ah/api/");
+//            MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport(),
+//                    new AndroidJsonFactory(), null)
+//                    // options for running against local devappserver
+//                    // - 10.0.2.2 is localhost's IP address in Android emulator
+//                    // - turn off compression when running against local devappserver
+//
+//                    //this url is for testing on emulator
+////                    .setRootUrl("http://10.0.2.2:8080/_ah/api/")
+//
+//                    .setRootUrl("http://<2600:100f:b117:959a:a5ab:6419:32e9:e73f>:8080/_ah/api/")
+//                    .setGoogleClientRequestInitializer(new GoogleClientRequestInitializer() {
+//                        @Override
+//                        public void initialize(AbstractGoogleClientRequest<?> abstractGoogleClientRequest) throws IOException {
+//                            abstractGoogleClientRequest.setDisableGZipContent(true);
+//                        }
+//                    });
             // end options for devappserver
 
             myApiService = builder.build();
