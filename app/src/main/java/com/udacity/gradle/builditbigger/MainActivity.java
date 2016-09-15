@@ -21,7 +21,7 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        mProgressBar = (ProgressBar)findViewById(R.id.progress_bar);
+        mProgressBar = (ProgressBar)findViewById(R.id.progress_bar);
     }
 
 
@@ -48,6 +48,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void tellJoke(View view) {
+
         getAndShowJoke();
 
 //        Intent mIntent = new Intent(this, MainJokeActivity.class);
@@ -58,7 +59,8 @@ public class MainActivity extends ActionBarActivity {
 
 
     private void getAndShowJoke() {
-//        mProgressBar.setVisibility(View.VISIBLE);
+        mProgressBar.setVisibility(View.VISIBLE);
+
         new GetJokeAsyncTask() {
             //            new GetJokeAsyncTask().execute(new Pair<Context, String>(this, "Nick Bradshaw"));
             @Override
@@ -69,10 +71,10 @@ public class MainActivity extends ActionBarActivity {
                     startActivity(mIntent);
 
                 } else {
-                    Toast.makeText(MainActivity.this, "Error while retrieving joke. This is no joke!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, R.string.joke_error_toast, Toast.LENGTH_LONG).show();
                 }
 
-//                mProgressBar.setVisibility(View.GONE);
+                    mProgressBar.setVisibility(View.GONE);
             }
         }.execute();
     }

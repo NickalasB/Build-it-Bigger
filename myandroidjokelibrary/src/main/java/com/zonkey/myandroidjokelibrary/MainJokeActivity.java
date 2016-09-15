@@ -14,6 +14,8 @@ public class MainJokeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main_joke);
 
         TextView jokeTextView = (TextView)findViewById(R.id.joke_fragment_textview);
+        // Inflate the layout for this fragment
+        Item = getIntent().getExtras().getString("joke1");
         jokeTextView.setText(getIntent().getExtras().getString("joke1"));
 
     }
