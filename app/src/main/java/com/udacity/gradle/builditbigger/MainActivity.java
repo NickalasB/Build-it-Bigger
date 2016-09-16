@@ -58,10 +58,12 @@ public class MainActivity extends ActionBarActivity {
     }
 
 
+
+
     private void getAndShowJoke() {
         mProgressBar.setVisibility(View.VISIBLE);
 
-        new GetJokeAsyncTask() {
+        new GetJokeAsyncTask(this) {
             //            new GetJokeAsyncTask().execute(new Pair<Context, String>(this, "Nick Bradshaw"));
             @Override
             protected void onPostExecute(String jokeString) {
