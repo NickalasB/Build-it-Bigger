@@ -51,16 +51,14 @@ public class MainActivity extends ActionBarActivity {
 
         getAndShowJoke();
 
-//        Intent mIntent = new Intent(this, MainJokeActivity.class);
-//        mIntent.putExtra("joke1", mjavaJokes.getJavaJoke1());
-//        startActivity(mIntent);
-//        Toast.makeText(this, mjavaJokes.getJavaJoke1(), Toast.LENGTH_SHORT).show();
     }
 
 
 
 
     private void getAndShowJoke() {
+//        Toast.makeText(getApplicationContext(), mjavaJokes.getJavaJoke1(), Toast.LENGTH_SHORT).show();
+
         mProgressBar.setVisibility(View.VISIBLE);
 
         new GetJokeAsyncTask(this) {
@@ -77,6 +75,7 @@ public class MainActivity extends ActionBarActivity {
                 }
 
                     mProgressBar.setVisibility(View.GONE);
+
             }
         }.execute();
     }
