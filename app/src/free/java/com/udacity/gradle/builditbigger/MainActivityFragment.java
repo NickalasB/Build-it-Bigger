@@ -15,6 +15,10 @@ import com.google.android.gms.ads.AdView;
  */
 public class MainActivityFragment extends Fragment {
 
+    private final String LOG_TAG = MainActivityFragment.class.getSimpleName();
+
+
+//    InterstitialAd mInterstitialAd;
     public MainActivityFragment() {
     }
 
@@ -22,6 +26,18 @@ public class MainActivityFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_main, container, false);
+
+//        mInterstitialAd = new InterstitialAd(getContext());
+//        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+//
+//        mInterstitialAd.setAdListener(new AdListener() {
+//            @Override
+//            public void onAdClosed() {
+//                requestNewInterstitial();
+//            }
+//        });
+//        requestNewInterstitial();
+
 
         AdView mAdView = (AdView) root.findViewById(R.id.adView);
         // Create an ad request. Check logcat output for the hashed device ID to
@@ -31,6 +47,21 @@ public class MainActivityFragment extends Fragment {
                 .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
                 .build();
         mAdView.loadAd(adRequest);
+
+//        if (mInterstitialAd.isLoaded()){
+//            mInterstitialAd.show();
+//        }
+
         return root;
+
     }
+
+//    private void requestNewInterstitial(){
+//        AdRequest adRequest = new AdRequest.Builder()
+//                .addTestDevice("34D91EE282E9619F629594693CC97B9E")
+//                .build();
+//
+//        mInterstitialAd.loadAd(adRequest);
+//    }
+
 }
