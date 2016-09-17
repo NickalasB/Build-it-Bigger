@@ -1,10 +1,7 @@
-package com.udacity.gradle.builditbigger;
-
-
-import java.util.Random;
-
+package com.example;
 
 import java.util.Random;
+
 
 public class javaJokes {
     public Random mRandom = new Random();
@@ -19,7 +16,11 @@ public class javaJokes {
                 "Chocolate covered olives!",
                 "Steve Gutenberg!",
                 "He-Man!",
-                "Dudes named Floyd!"};
+                "Dudes named Floyd!","" +
+                "Your mom!",
+                "Tiny hands!",
+                "That guy from your history class!",
+                "The color magenta!"};
         int INDEXn = mRandom.nextInt(jokeList.length);
         for (int i2 = 0; i2 < INDEXn; i2++) {
             randomPunchLine = (String)(jokeList[INDEXn]);
