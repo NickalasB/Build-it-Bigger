@@ -19,11 +19,11 @@ android {
         }
     }
 
-    productFlavors{
-        free{
+    productFlavors {
+        free {
             applicationId "com.udacity.gradle.builditbigger.free"
         }
-        paid{
+        paid {
             applicationId "com.udacity.gradle.builditbigger.paid"
         }
     }
@@ -34,9 +34,10 @@ dependencies {
     // Added for AdMob
     compile project(":javajokelibrary")
     compile project(":myandroidjokelibrary")
-    compile 'com.android.support:appcompat-v7:24.2.0'
     freeCompile 'com.google.android.gms:play-services-ads:9.4.0'
     compile project(path: ':backend', configuration: 'android-endpoints')
     androidTestCompile 'junit:junit:4.12'
     androidTestCompile "org.mockito:mockito-core:1.+"
+    compile 'com.android.support:appcompat-v7:24.2.1'
+    compile 'com.google.android.gms:play-services-ads:9.4.0'
 }
