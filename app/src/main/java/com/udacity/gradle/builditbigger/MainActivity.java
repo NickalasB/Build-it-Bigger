@@ -1,20 +1,26 @@
 package com.udacity.gradle.builditbigger;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
-import com.example.javaJokes;
 
+import com.example.javaJokes;
+import com.zonkey.myandroidjokelibrary.MainJokeActivity;
 
 public class MainActivity extends ActionBarActivity {
+    private javaJokes mjavaJokes = new javaJokes();
+    private ProgressBar mProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mProgressBar = (ProgressBar) findViewById(R.id.progress_bar);
     }
 
 
@@ -41,11 +47,28 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void tellJoke(View view) {
-
-        javaJokes mjavaJokes = new javaJokes();
-
-        Toast.makeText(this, mjavaJokes.getJavaJoke(), Toast.LENGTH_SHORT).show();
+            getAndShowJoke();
     }
 
+    private void getAndShowJoke() {
+//        Toast.makeText(getApplicationContext(), mjavaJokes.getJavaJoke1(), Toast.LENGTH_SHORT).show();
+        mProgressBar.setVisibility(View.VISIBLE);
+        new GetJokeAsyncTask(this) {
+            @Override
+            protected void onPostExecute(String jokeString) {
+                if (jokeString != null) {
+                    Intent mIntent = new Intent(getApplicationContext(), MainJokeActivity.class);
+                    mIntent.putExtra("joke1", mjavaJokes.getJavaJoke1());
+                    startActivity(mIntent);
+                } else {
+                    Toast.makeText(getApplicationContext(), R.string.joke_error_toast, Toast.LENGTH_LONG).show();
+                }
 
+                mProgressBar.setVisibility(View.GONE);
+
+            }
+        }.execute();
+    }
 }
+
+
