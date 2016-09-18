@@ -54,7 +54,6 @@ public class MainActivity extends ActionBarActivity {
 //        Toast.makeText(getApplicationContext(), mjavaJokes.getJavaJoke1(), Toast.LENGTH_SHORT).show();
         mProgressBar.setVisibility(View.VISIBLE);
         new GetJokeAsyncTask(this) {
-            //            new GetJokeAsyncTask().execute(new Pair<Context, String>(this, "Nick Bradshaw"));
             @Override
             protected void onPostExecute(String jokeString) {
                 if (jokeString != null) {
@@ -62,7 +61,7 @@ public class MainActivity extends ActionBarActivity {
                     mIntent.putExtra("joke1", mjavaJokes.getJavaJoke1());
                     startActivity(mIntent);
                 } else {
-                    Toast.makeText(MainActivity.this, R.string.joke_error_toast, Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), R.string.joke_error_toast, Toast.LENGTH_LONG).show();
                 }
 
                 mProgressBar.setVisibility(View.GONE);

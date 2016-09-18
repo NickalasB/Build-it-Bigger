@@ -76,7 +76,6 @@ public class MainActivity extends ActionBarActivity {
         }
     }
 
-
     private void getAndShowJoke() {
 //        Toast.makeText(getApplicationContext(), mjavaJokes.getJavaJoke1(), Toast.LENGTH_SHORT).show();
         mProgressBar.setVisibility(View.VISIBLE);
